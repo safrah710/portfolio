@@ -27,27 +27,26 @@ const Project = ({ heading, username, length, specfic }) => {
   const [projectsArray, setProjectsArray] = useState([]);
   
   // Replace with your GitHub token
-  const githubToken = process.env.REACT_APP_GITHUB_TOKEN; 
+  // const githubToken = process.env.REACT_APP_GITHUB_TOKEN;
+  // const githubToken = "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" 
 
   const fetchRepos = useCallback(async () => {
     let repoList = [];
     try {
       // Adding Authorization header with the GitHub token
-      const headers = {
-        Authorization: `Bearer ${githubToken}`,
-      };
+      // const headers = {
+      //   Authorization: `Bearer ${githubToken}`,
+      // };
 
       // Getting all repos
-      const response = await axios.get(allReposAPI, { headers });
+      const response = await axios.get(allReposAPI);
       // Slicing to the length
       repoList = [...response.data.slice(0, length)];
 
       // Adding specified repos
       try {
         for (let repoName of specfic) {
-          const response = await axios.get(`${specficReposAPI}/${repoName}`, {
-            headers,
-          });
+          const response = await axios.get(`${specficReposAPI}/${repoName}`);
           repoList.push(response.data);
         }
       } catch (error) {
@@ -59,7 +58,7 @@ const Project = ({ heading, username, length, specfic }) => {
     } catch (error) {
       console.error(error.message);
     }
-  }, [allReposAPI, length, specfic, specficReposAPI, githubToken]);
+  }, [allReposAPI, length, specfic, specficReposAPI]);
 
   useEffect(() => {
     fetchRepos();

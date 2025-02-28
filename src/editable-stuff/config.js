@@ -17,7 +17,7 @@ const mainBody = {
     },
     {
       image: "fa-instagram",
-      url: "https://www.instagram.com/hashirshoaeb/",
+      url: "https://www.instagram.com/saf_rah_a.z?igsh=MWJxMGJid3NwenRoag%3D%3D&utm_source=qr",
     },
     {
       image: "fa-linkedin",
